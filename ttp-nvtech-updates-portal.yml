@@ -1,0 +1,36 @@
+- name: 'HACKTIFY: Setup NVTech Work Updates Portal Lab'
+  id: d0792d7d-d78c-07b3-3594-49be1b490baa
+  description: >-
+    The NVTech Work Updates Portal is running on port 80. The platform is an
+    internal employee collaboration system with a dashboard, internal
+    messaging, and user profile pages. The application includes an account
+    recovery feature. Begin by exploring the password recovery flow for
+    known usernames — inspect what the application returns in the UI. Once
+    you have access, investigate how user profiles are referenced in the
+    URL. Your objective is to uncover the name of a confidential internal
+    project by accessing a profile you should not have access to.
+  tactic: credential-access
+  technique_id: T1552
+  technique_name: 'Unsecured Credentials'
+  singleton: true
+  repeatable: false
+  delete_payload: false
+  executors:
+    - name: sh
+      platform: linux
+      command: |
+        git clone https://github.com/hacktifytechnologies/nvtech-updates-portal /opt/hacktify/nvtech-updates-portal
+        cd /opt/hacktify/nvtech-updates-portal
+        chmod +x setup.sh
+        bash setup.sh -a
+      code: null
+      language: null
+      build_target: null
+      payloads: []
+      uploads: []
+      timeout: 300
+      parsers: []
+      cleanup: []
+      variations: []
+      additional_info: {}
+  requirements: []
